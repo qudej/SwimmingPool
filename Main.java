@@ -5,11 +5,16 @@ public class Main {
         int devastationSpeed = 10;
         int startVolume = 0;
         int time = 0;
+        double approximateTime;
+        approximateTime = volume / fillingSpeed;
 
+        System.out.println("Примерное время наполнения  бассейна = " + approximateTime);
         while (startVolume != volume) {
             startVolume = startVolume + fillingSpeed - devastationSpeed;
             time = time + 1;
+            approximateTime = (double) (volume - startVolume) / fillingSpeed;
+            System.out.println("Примерное время наполнения  бассейна = " + approximateTime);
             }
-        System.out.println("Время наполнения бассейна = " + time);
+        System.out.println("Фактическое время наполнения бассейна = " + time);
     }
 }
