@@ -1,11 +1,24 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        int volume = 1200;
-        int fillingSpeed = 10;
-        int devastationSpeed = 10;
-        int startVolume = 0;
+        int volume;
+        int fillingSpeed;
+        int devastationSpeed;
+        int startVolume;
         int time = 0;
         double approximateTime;
+
+
+        System.out.println("Введите объем необходимого бассейна:");
+        volume = new Scanner(System.in).nextInt();
+        System.out.println("Введите примерную скорость подачи воды (л/ч):");
+        fillingSpeed = new Scanner(System.in).nextInt();
+        System.out.println("Введите ориентировочную потерю воды при заливке (л/ч):");
+        devastationSpeed = new Scanner(System.in).nextInt();
+        System.out.println("Введите изначальное количество воды в бассейне:");
+        startVolume = new Scanner(System.in).nextInt();
+
         approximateTime = volume / fillingSpeed;
 
         if (devastationSpeed >= fillingSpeed) {
@@ -16,9 +29,12 @@ public class Main {
                 startVolume = startVolume + fillingSpeed - devastationSpeed;
                 time = time + 1;
                 approximateTime = (double) (volume - startVolume) / fillingSpeed;
-                System.out.println("Примерное время наполнения  бассейна = " + approximateTime);
+                System.out.println("Примерное время наполнения  бассейна = " + approximateTime + " минут");
+                if (startVolume >= volume) {
+                    break;
+                }
             }
-            System.out.println("Фактическое время наполнения бассейна = " + time);
+            System.out.println("Фактическое время наполнения бассейна = " + time + " минут");
         }
     }
 }
